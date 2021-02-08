@@ -15,8 +15,10 @@ class CreateAdsTable extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
-            $table->integer('coach_id');
+            $table->unsignedBigInteger('coach_id');
             $table->foreign('coach_id')->references('id')->on('users');
+            $table->unsignedBigInteger('student_id')->nullable();
+            $table->foreign('student_id')->references('id')->on('users');
             $table->dateTime('coaching_date');
             $table->string('description');
             $table->tinyInteger('ad_rating', 0, 5)->nullable();
@@ -24,9 +26,7 @@ class CreateAdsTable extends Migration
             $table->tinyInteger('hourly_rate');
             $table->integer('total_price');
             $table->timestamps();
-            $table->enum('status', ['available', 'pending', 'finished', 'rated']);
-            $table->tinyInteger('student_id')->nullable();
-            $table->foreign('student_id')->references('id')->on('users');
+            $table->enum('status', ['available', 'pending', 'finished', 'rated'])->default('available');
             $table->string('comments')->nullable();
         });
     }

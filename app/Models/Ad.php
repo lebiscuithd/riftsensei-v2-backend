@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ad extends Model
 {
@@ -18,7 +19,17 @@ class Ad extends Model
         'ad_rating',
         'duration',
         'hourly_rate',
-        'comments'
+        'comments',
+        'total_price'
     ];
+
+    public function coach()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function student()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }
