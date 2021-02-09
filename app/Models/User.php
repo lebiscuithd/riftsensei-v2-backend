@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Rank;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -21,6 +22,18 @@ class User extends Authenticatable implements JWTSubject
         'username',
         'email',
         'password',
+        'rank_id',
+        'verified_coach',
+        'admin',
+        'wallet',
+        'twitter_link',
+        'opgg_link',
+        'avatar',
+        'description',
+        'pedagogy',
+        'coaching_hours',
+        'coach_rating',
+        'coaching_hours_spent'
     ];
 
     /**
@@ -62,6 +75,11 @@ class User extends Authenticatable implements JWTSubject
 
     public function ads()
     {
-        $this->hasMany(Ad::class);
+        return $this->hasMany(Ad::class);
+    }
+
+    public function rank()
+    {
+        return $this->belongsTo(Rank::class);
     }
 }

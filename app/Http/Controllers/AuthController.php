@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Validator;
+use App\Http\Resources\UserResource;
 
 class AuthController extends Controller
 {
@@ -50,6 +51,7 @@ class AuthController extends Controller
             'username' => 'required|string|between:2,20',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|confirmed|min:6',
+            'rank_id' => 'integer|between:1,5'
         ]);
 
         if($validator->fails()){
@@ -59,11 +61,11 @@ class AuthController extends Controller
         $user = User::create(array_merge(
                     $validator->validated(),
                     ['password' => bcrypt($request->password)]
-                ));
+                ));       
 
         return response()->json([
             'message' => 'User successfully registered',
-            'user' => $user
+            'user' => new UserResource($user)
         ], 201);
     }
 
