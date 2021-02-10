@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Cartalyst\Stripe\Exception\CardErrorException;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +28,32 @@ Route::group([
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+});
+
+Route::post('/checkout', function(Request $request) {
+    try {
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $charge = Stripe::charges()->create([
+            'amount' => $request->amount,
+            'currency' => $request->currency,
+            'source' => $request->stripeToken,
+            'description' => $request->description,
+            'receipt_email' => $request->email,
+            'metadata' => [
+                'data1' => 'metadata 1',
+                'data2' => 'metadata 2',
+                'data3' => 'metadata 3',
+            ],
+        ]);
+
+        // save this info to your database
+
+        // SUCCESSFUL
+        return response()->json('Thank you! Your payment has been accepted.', 200);
+    } catch (CardErrorException $error) {
+        // save info to database for failed
+        return response()->json($error,500);
+    }
 });
