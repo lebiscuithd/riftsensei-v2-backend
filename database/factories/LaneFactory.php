@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Rank;
+use App\Models\Lane;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class RankFactory extends Factory
+class LaneFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Rank::class;
+    protected $model = Lane::class;
 
     /**
      * Define the model's default state.

@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\LaneResource;
 
 class UserResource extends JsonResource
 {
@@ -29,8 +30,9 @@ class UserResource extends JsonResource
             'coaching_hours_spent' => $this->coaching_hours_spent,
             'opgg_link' => $this->opgg_link,
             'twitter_link' => $this->twitter_link,
-            
-            'rank' => $this->rank
+
+            'rank' => $this->rank,
+            'lanes' => LaneResource::collection($this->lanes)
         ];
 
     }

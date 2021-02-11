@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return $user;
+        return new UserResource($user);
     }
 
     public function show_ads(User $user)
@@ -60,6 +60,47 @@ class UserController extends Controller
         }
             return response()->json(['message'=>'Nope','data'=>null], 200);
     }
+
+//    public function getUserLanes()
+//    {
+//        $users = User::whereHas('lanes','>',0)->get();
+//        foreach($users as $user){
+//
+//            $user->lanes;  //we can get trophies of each user
+//        }
+//
+//        return response()->json(['data' => $users]);
+//    }
+
+    public function userLane(User $user, $idOfLanes)
+    {
+        $user->lanes()->attach($idOfLanes);
+
+//        $idOfLanes = $request->lane_id;
+//
+//        $user->lanes()->attach($idOfLanes);
+
+        return response()->json(['message' => 'Lane has been registered', 'data' => new UserResource($user)]);
+    }
+
+    public function deleteUserLane(User $user, $idOfLanes)
+    {
+        $user->lanes()->detach($idOfLanes);
+
+        return response()->json(['message' => 'Lane has been deleted', 'data' => new UserResource($user)]);
+
+    }
+
+//    public function addLanes(Request $request, User $user)
+//    {
+//
+////        $user = User::find($request->user_id);
+//        $laneIds = $request->lane_id;
+//        foreach ($laneIds as $lane_id)
+//        $user->lanes()->attach($lane_id);
+//
+//        return response()->json(['message' => 'Lanes have been added successfully']);
+//    }
 
     /**
      * Update the specified resource in storage.

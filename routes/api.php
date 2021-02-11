@@ -57,3 +57,13 @@ Route::post('/checkout', function(Request $request) {
         return response()->json($error,500);
     }
 });
+
+Route::get('/getUserLanes', [UserController::class, 'getUserLanes']);
+Route::post('/userLanes/{user}/{lane}', [UserController::class, 'userLane']);
+
+Route::post('/addLanes/{user}', [UserController::class, 'addLanes']);
+
+
+Route::delete('/deleteUserLane/{user}/{lane}', [UserController::class, 'deleteUserLane']);
+Route::apiResource('users', 'App\Http\Controllers\UserController');
+

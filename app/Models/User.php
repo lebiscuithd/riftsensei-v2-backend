@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Rank;
+use App\Models\Lane;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -71,7 +72,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTCustomClaims() {
         return [];
-    }    
+    }
 
     public function ads()
     {
@@ -81,5 +82,14 @@ class User extends Authenticatable implements JWTSubject
     public function rank()
     {
         return $this->belongsTo(Rank::class);
+    }
+
+    public function lanes()
+    {
+        return $this->belongsToMany(
+            Lane::class,
+            'user_lanes',
+            'user_id',
+            'lane_id');
     }
 }
