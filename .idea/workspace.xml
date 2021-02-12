@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4713644c-9999-4a34-906a-2838ed4708b4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ReceiptResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ReceiptResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_12_112756_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_12_112756_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ProductSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ProductSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ReceiptSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/ReceiptSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/coachResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/CoachResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +172,7 @@
       <workItem from="1612795079741" duration="206000" />
       <workItem from="1612949388316" duration="15815000" />
       <workItem from="1613050652528" duration="8253000" />
-      <workItem from="1613119420860" duration="8225000" />
+      <workItem from="1613119420860" duration="10212000" />
     </task>
     <servers />
   </component>

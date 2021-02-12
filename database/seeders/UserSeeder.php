@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run()
     {
 //        factory(User::class, 5)->create();
-        \App\Models\User::factory(5)->create();
+        \App\Models\User::factory(10)->create();
 
         foreach (User::all() as $user) {
             $lanes = \App\Models\Lane::inRandomOrder()->take(rand(1,3))->pluck('id');

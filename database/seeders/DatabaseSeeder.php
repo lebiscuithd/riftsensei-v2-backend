@@ -17,5 +17,16 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Lane::factory(6)->create();
         // \App\Models\Rank::factory(9)->create();
         // \App\Models\UserLane::factory(9)->create();
+//        \App\Models\Ad::factory(10)->create();
+
+
+        $this->call([
+            RankSeeder::class,
+            LaneSeeder::class,
+            ProductSeeder::class,
+            UserSeeder::class,
+            ReceiptSeeder::class,
+            AdSeeder::class
+        ]);
     }
 }

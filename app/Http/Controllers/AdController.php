@@ -15,7 +15,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ads = Ads::all();
+        $ads = Ad::all();
         return AdResource::collection($ads);
     }
 
