@@ -59,11 +59,13 @@ Route::post('/checkout', function(Request $request) {
 });
 
 Route::get('/getUserLanes', [UserController::class, 'getUserLanes']);
-Route::post('/userLanes/{user}/{lane}', [UserController::class, 'userLane']);
+Route::post('/addLane/{user}/{lane}', [UserController::class, 'addLane']);
 
 Route::post('/addLanes/{user}', [UserController::class, 'addLanes']);
 
 
 Route::delete('/deleteUserLane/{user}/{lane}', [UserController::class, 'deleteUserLane']);
 Route::apiResource('users', 'App\Http\Controllers\UserController');
+//Route::apiResource('ads', 'App\Http\Controllers\AdController');
+Route::post('/ads', [AdController::class, 'store']);
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Models\Ad;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -72,7 +73,7 @@ class UserController extends Controller
 //        return response()->json(['data' => $users]);
 //    }
 
-    public function userLane(User $user, $idOfLanes)
+    public function addLane(User $user, $idOfLanes)
     {
         $user->lanes()->attach($idOfLanes);
 
@@ -91,16 +92,19 @@ class UserController extends Controller
 
     }
 
-//    public function addLanes(Request $request, User $user)
-//    {
-//
-////        $user = User::find($request->user_id);
-//        $laneIds = $request->lane_id;
-//        foreach ($laneIds as $lane_id)
-//        $user->lanes()->attach($lane_id);
-//
-//        return response()->json(['message' => 'Lanes have been added successfully']);
-//    }
+    public function addLanes(Request $request, User $user)
+    {
+        foreach ($request->lane_id as $lane_Id) {
+            $lane = DB::table('user_lanes')->where('lane_id', $lane_Id)->first();
+            if ($lane) {
+                $user->lanes()->detach($lane_Id);
+                $user->lanes()->attach($lane_Id);
+            } else {
+                $user->lanes()->attach($lane_Id);
+            }
+        }
+        return response()->json(['message' => 'Lanes have been added successfully']);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -111,6 +115,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+
+        foreach ($request->lane_id as $lane_Id) {
+            $lane = DB::table('user_lanes')->where('lane_id', $lane_Id)->first();
+            if ($lane) {
+                $user->lanes()->detach($lane_Id);
+                $user->lanes()->attach($lane_Id);
+            } else {
+                $user->lanes()->attach($lane_Id);
+            }
+            }
+
          if ($user->update($request->all())) {
                     return response()->json([
                         'success' => 'User successfully updated'

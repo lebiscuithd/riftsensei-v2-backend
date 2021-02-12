@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Http\Resources\UserResource;
 
@@ -51,7 +52,7 @@ class AuthController extends Controller
             'username' => 'required|string|between:2,20',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|confirmed|min:6',
-            'rank_id' => 'integer|between:1,5'
+            'rank_id' => 'integer|between:1,10'
         ]);
 
         if($validator->fails()){
@@ -61,7 +62,11 @@ class AuthController extends Controller
         $user = User::create(array_merge(
                     $validator->validated(),
                     ['password' => bcrypt($request->password)]
-                ));       
+                ));
+
+        foreach ($request->lane_id as $lane_Id) {
+            $user->lanes()->attach($lane_Id);
+        }
 
         return response()->json([
             'message' => 'User successfully registered',
