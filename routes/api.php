@@ -68,6 +68,7 @@ Route::post('/addLanes/{user}', [UserController::class, 'addLanes']);
 Route::delete('/deleteUserLane/{user}/{lane}', [UserController::class, 'deleteUserLane']);
 Route::apiResource('users', 'App\Http\Controllers\UserController');
 Route::apiResource('ads', 'App\Http\Controllers\AdController');
+Route::get('ads/{orderBy}/{type}', 'App\Http\Controllers\AdController@orderBy');
 //Route::post('/ads', [AdController::class, 'store']);
 
 Route::get('/receipts',[ReceiptController::class, 'index']);
