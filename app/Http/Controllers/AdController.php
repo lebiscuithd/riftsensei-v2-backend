@@ -43,10 +43,8 @@ class AdController extends Controller
             'duration' => $request->duration,
             'hourly_rate' => $request->hourly_rate,
             'total_price' => (($request->hourly_rate) * ($request->duration)),
-            'student_id' => $request->student_id
         ]);
         $coach = $ad->coach;
-        $student = $ad->student;
         return $ad;
     }
 
