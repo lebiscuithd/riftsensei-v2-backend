@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer('Quantity');
-            $table->integer('Cost');
+            $table->float('Cost');
             $table->string('image');
         });
     }
