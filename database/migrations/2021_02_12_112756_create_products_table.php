@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('Quantity');
             $table->integer('Cost');
+            $table->string('image');
         });
     }
 

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReceiptController;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
 
@@ -69,3 +70,4 @@ Route::apiResource('users', 'App\Http\Controllers\UserController');
 //Route::apiResource('ads', 'App\Http\Controllers\AdController');
 Route::post('/ads', [AdController::class, 'store']);
 
+Route::get('/receipts',[ReceiptController::class, 'index']);

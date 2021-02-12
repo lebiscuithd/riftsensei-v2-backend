@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Receipt;
 use Illuminate\Http\Request;
+use App\Http\Resources\ReceiptResource;
 
 class ReceiptController extends Controller
 {
@@ -25,7 +26,7 @@ class ReceiptController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
