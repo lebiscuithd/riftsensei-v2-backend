@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\CoachResource;
+use App\Http\Resources\StudentResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AdResource extends JsonResource

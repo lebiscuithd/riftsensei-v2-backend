@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use Illuminate\Http\Request;
+use App\Http\Resources\AdResource;
 
 class AdController extends Controller
 {
@@ -14,10 +15,8 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ads = Ad::whereHas('coach', function ($query) {
-            $query->where('username');
-        })->get();
-        return $ads;
+        $ads = Ads::all();
+        return AdResource::collection($ads);
     }
 
 
