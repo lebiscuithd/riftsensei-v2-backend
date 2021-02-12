@@ -23,7 +23,7 @@ class CreateAdsTable extends Migration
             $table->string('description');
             $table->tinyInteger('ad_rating', 0, 5)->nullable();
             $table->tinyInteger('duration');
-            $table->tinyInteger('hourly_rate');
+            $table->integer('hourly_rate');
             $table->integer('total_price');
             $table->timestamps();
             $table->enum('status', ['available', 'pending', 'finished', 'rated'])->default('available');
