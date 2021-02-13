@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use Illuminate\Http\Request;
-use Validator;
 use App\Http\Resources\AdResource;
 
 class AdController extends Controller
@@ -16,7 +15,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ads = Ad::paginate(8);
+        $ads = Ad::paginate(5);
         return AdResource::collection($ads);
     }
 
@@ -29,17 +28,13 @@ class AdController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'description' => 'required|string',
-            'duration' => 'required|integer|between:1,8',
-            'coaching_date' => 'required|date',
-            'hourly_rate' => 'required|integer|min:100',
-            'coach_id' => 'required|integer'
+        $request->validate([
+            'description' => ['required'],
+            'duration' => ['required'],
+            'coaching_date' => ['required'],
+            'hourly_rate' => ['required'],
+            'coach_id' => ['required']
         ]);
-        
-        if($validator->fails()){
-            return response($validator->errors(), 422);
-        }
 
         $ad = Ad::create([
             'coach_id' => $request->coach_id,
@@ -49,8 +44,8 @@ class AdController extends Controller
             'hourly_rate' => $request->hourly_rate,
             'total_price' => (($request->hourly_rate) * ($request->duration)),
         ]);
-        
-        return new AdResource($ad);
+        $coach = $ad->coach;
+        return $ad;
     }
 
     /**
@@ -62,13 +57,19 @@ class AdController extends Controller
     public function show(Ad $ad)
     {
         // return Ad::user_id($ad);
-        return new AdResource($ad);
+        return $ad;
+    }
+
+    public function show_user(Ad $ad)
+    {
+        $user = $ad->user;
+            return response()->json(['message'=>'Success','data'=>$user], 200);
+            // return response()->json(['message'=>'Nope','data'=>null], 200);
     }
 
     public function orderBy($orderBy, $type)
     {
-        $ads = Ad::orderBy($orderBy, $type)->paginate(8);
-        return AdResource::collection($ads);
+        return Ad::orderBy($orderBy, $type)->get();
     }
     /**
      * Update the specified resource in storage.
@@ -79,22 +80,9 @@ class AdController extends Controller
      */
     public function update(Request $request, Ad $ad)
     {
-        $validator = Validator::make($request->all(), [
-            'description' => 'string',
-            'duration' => 'integer|between:1,8',
-            'coaching_date' => 'date',
-            'hourly_rate' => 'integer|min:100'
-        ]);
-
-        if($validator->fails()){
-            return response($validator->errors(), 422);
-        }
-
         if ($ad->update($request->all())) {
-        $ad->total_price = ($ad->duration * $ad->hourly_rate);
-        $ad->save();    
         return response()->json([
-            'success' => 'Ad Updated'
+            'success' => 'Ad Update'
         ], 200);
     }
     }

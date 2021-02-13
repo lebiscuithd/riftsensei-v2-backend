@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\RankResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class coachResource extends JsonResource
@@ -24,7 +23,8 @@ class coachResource extends JsonResource
             'verified_coach' => $this->verified_coach,
             'avatar' => $this->avatar,
             'coach_rating' => $this->coach_rating,
-            'rank' => new RankResource($this->rank),
+
+            'rank' => $this->rank,
             'lanes' => LaneResource::collection($this->lanes)
         ];
     }
