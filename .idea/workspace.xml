@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4713644c-9999-4a34-906a-2838ed4708b4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/CoachResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/CoachResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/RankResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/RankResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/cors.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReceiptController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +173,8 @@
       <workItem from="1613119420860" duration="13083000" />
       <workItem from="1613380580250" duration="2000" />
       <workItem from="1613382459875" duration="341000" />
-      <workItem from="1613383063216" duration="1055000" />
+      <workItem from="1613383063216" duration="4186000" />
+      <workItem from="1613400623861" duration="5608000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of github.com:lebiscuithd/riftsensei-v2-backend&#10;&#10;# Conflicts:&#10;#&#9;app/Http/Controllers/AdController.php">
       <created>1613145255092</created>

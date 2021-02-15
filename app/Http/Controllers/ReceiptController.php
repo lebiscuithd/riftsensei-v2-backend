@@ -37,7 +37,7 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $receipt = Receipt::create($request->all());
     }
 
     /**

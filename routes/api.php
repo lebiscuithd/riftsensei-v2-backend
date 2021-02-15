@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
@@ -47,7 +49,7 @@ Route::post('/checkout', function(Request $request) {
             'currency' => 'eur',
             'source' => $request->stripeToken,
             'description' => $request->description,
-            'receipt_email' => $request->email,
+            'receipt_email' => 'test@gmail.com',
             'metadata' => [
                 'data1' => 'metadata 1',
                 'data2' => 'metadata 2',
@@ -58,7 +60,14 @@ Route::post('/checkout', function(Request $request) {
         // save this info to your database
 
         // SUCCESSFUL
-        return response()->json('Thank you! Your payment has been accepted.', 200);
+        $wallet = auth()->user()->wallet;
+        $newWallet = ($wallet + $request->quantity);
+            auth()->user()->update([
+            'wallet' => $newWallet
+        ]);
+
+
+        return response()->json(['message' => 'Thank you! Your payment has been accepted.', 'newWallet' => $newWallet], 200);
     } catch (CardErrorException $error) {
         // save info to database for failed
         return response()->json($error,500);
@@ -84,3 +93,4 @@ Route::get('ads/{orderBy}/{type}', 'App\Http\Controllers\AdController@orderBy');
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/receipts',[ReceiptController::class, 'index']);
+Route::post('/receipts', [ReceiptController::class, 'store']);
