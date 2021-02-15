@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReceiptController;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
@@ -20,6 +21,8 @@ use Cartalyst\Stripe\Exception\CardErrorException;
 |
 */
 
+## Routes Auth
+## -------
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -31,6 +34,9 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
+
+## Routes Stripe
+## -------
 
 Route::post('/checkout', function(Request $request) {
     try {
@@ -59,16 +65,22 @@ Route::post('/checkout', function(Request $request) {
     }
 });
 
-Route::get('/getUserLanes', [UserController::class, 'getUserLanes']);
+## Routes User
+## -------
+
 Route::post('/addLane/{user}/{lane}', [UserController::class, 'addLane']);
-
 Route::post('/addLanes/{user}', [UserController::class, 'addLanes']);
-
-
 Route::delete('/deleteUserLane/{user}/{lane}', [UserController::class, 'deleteUserLane']);
 Route::apiResource('users', 'App\Http\Controllers\UserController');
+
+
+## Routes Ads
+## -------
 Route::apiResource('ads', 'App\Http\Controllers\AdController');
 Route::get('ads/{orderBy}/{type}', 'App\Http\Controllers\AdController@orderBy');
-//Route::post('/ads', [AdController::class, 'store']);
 
+## Routes Products/Receipts
+## -------
+
+Route::get('/products', [ProductController::class, 'index']);
 Route::get('/receipts',[ReceiptController::class, 'index']);
