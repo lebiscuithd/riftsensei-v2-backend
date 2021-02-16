@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4713644c-9999-4a34-906a-2838ed4708b4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+>>>>>>> f3d00a91223bf70b3b26d8b5b06c4522416b3d4f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,12 +137,19 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1oCecPR7R6Pgqy21efBwZjOIVfa" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+<<<<<<< HEAD
+=======
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+>>>>>>> f3d00a91223bf70b3b26d8b5b06c4522416b3d4f
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -168,6 +179,7 @@
       <updated>1612795078298</updated>
       <workItem from="1612795079741" duration="206000" />
       <workItem from="1612949388316" duration="15815000" />
+<<<<<<< HEAD
       <workItem from="1613050652528" duration="8253000" />
       <workItem from="1613119420860" duration="13083000" />
       <workItem from="1613380580250" duration="2000" />
@@ -176,6 +188,11 @@
       <workItem from="1613400623861" duration="5766000" />
       <workItem from="1613429798640" duration="15000" />
       <workItem from="1613482291593" duration="1142000" />
+=======
+      <workItem from="1613050652528" duration="4154000" />
+      <workItem from="1613072865602" duration="36000" />
+      <workItem from="1613072903911" duration="3055000" />
+>>>>>>> f3d00a91223bf70b3b26d8b5b06c4522416b3d4f
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of github.com:lebiscuithd/riftsensei-v2-backend&#10;&#10;# Conflicts:&#10;#&#9;app/Http/Controllers/AdController.php">
       <created>1613145255092</created>
@@ -190,6 +207,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -205,5 +223,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'master' of github.com:lebiscuithd/riftsensei-v2-backend&#10;&#10;# Conflicts:&#10;#&#9;app/Http/Controllers/AdController.php" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of github.com:lebiscuithd/riftsensei-v2-backend&#10;&#10;# Conflicts:&#10;#&#9;app/Http/Controllers/AdController.php" />
+=======
+  <component name="WindowStateProjectService">
+    <state x="1099" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1613074348788">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="1099" y="313" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1613074348788" />
+    <state x="1185" y="482" key="NewPhpFileDialog" timestamp="1613074319575">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="1185" y="482" key="NewPhpFileDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1613074319575" />
+    <state width="503" height="445" key="SwitcherDM" timestamp="1613074177187">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="503" height="445" key="SwitcherDM/0.23.1920.1057@0.23.1920.1057" timestamp="1613074177187" />
+>>>>>>> f3d00a91223bf70b3b26d8b5b06c4522416b3d4f
   </component>
 </project>
