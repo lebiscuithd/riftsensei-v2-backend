@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Ad;
+use Validator;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'show_ads']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,39 +47,6 @@ class UserController extends Controller
         }
     }
 
-    public function addLane(User $user, $idOfLanes)
-    {
-        $user->lanes()->attach($idOfLanes);
-
-//        $idOfLanes = $request->lane_id;
-//
-//        $user->lanes()->attach($idOfLanes);
-
-        return response()->json(['message' => 'Lane has been registered', 'data' => new UserResource($user)]);
-    }
-
-    public function deleteUserLane(User $user, $idOfLanes)
-    {
-        $user->lanes()->detach($idOfLanes);
-
-        return response()->json(['message' => 'Lane has been deleted', 'data' => new UserResource($user)]);
-
-    }
-
-    public function addLanes(Request $request, User $user)
-    {
-        foreach ($request->lane_id as $lane_Id) {
-            $lane = DB::table('user_lanes')->where('lane_id', $lane_Id)->first();
-            if ($lane) {
-                $user->lanes()->detach($lane_Id);
-                $user->lanes()->attach($lane_Id);
-            } else {
-                $user->lanes()->attach($lane_Id);
-            }
-        }
-        return response()->json(['message' => 'Lanes have been added successfully']);
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -84,6 +56,22 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $validator = Validator::make($request->all(), [
+            'username' => 'unique:users|string|between:2,20',
+            'email' => 'string|email|max:100|unique:users',
+            'password' => 'string|confirmed|min:6',
+            'rank_id' => 'integer|between:1,10',
+            'lane_id' => 'array'
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+        if ($user->id !== auth()->user()->id) {
+            return response()->json([
+                'message' => 'Unauthorized'
+            ], 401);
+        }
         if ($request->lane_id) {
             $user->lanes()->detach();
             foreach ($request->lane_id as $lane_Id) {
@@ -91,7 +79,13 @@ class UserController extends Controller
                 }
         }
 
-         if ($user->update($request->except(['wallet', 'remember_token', 'password', 'id', 'admin', 'verified_coach', 'coaching_hours', 'coach_rating', 'coaching_hours_spent']))) {
+        if ($request->password) {
+            $crypt = bcrypt($request->password);
+            $user->password = $crypt;
+            $user->save();
+        }
+
+         if ($user->update($request->except(['wallet', 'password', 'remember_token', 'id', 'admin', 'verified_coach', 'coaching_hours', 'coach_rating', 'coaching_hours_spent']))) {
                     return response()->json([
                         'success' => 'User successfully updated',
                         'user' => new UserResource($user)
