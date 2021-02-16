@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4713644c-9999-4a34-906a-2838ed4708b4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,10 +138,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../riftsensei-v2-frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -173,6 +175,7 @@
       <workItem from="1613383063216" duration="4186000" />
       <workItem from="1613400623861" duration="5766000" />
       <workItem from="1613429798640" duration="15000" />
+      <workItem from="1613482291593" duration="1142000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of github.com:lebiscuithd/riftsensei-v2-backend&#10;&#10;# Conflicts:&#10;#&#9;app/Http/Controllers/AdController.php">
       <created>1613145255092</created>
