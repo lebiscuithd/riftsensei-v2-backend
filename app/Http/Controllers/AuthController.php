@@ -49,10 +49,11 @@ class AuthController extends Controller
      */
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
-            'username' => 'required|string|between:2,20',
+            'username' => 'required|unique:users|string|between:2,20',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|confirmed|min:6',
-            'rank_id' => 'integer|between:1,10'
+            'rank_id' => 'required|integer|between:1,10',
+            'lane_id' => 'required|array'
         ]);
 
         if($validator->fails()){
