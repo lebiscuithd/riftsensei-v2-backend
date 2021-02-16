@@ -10,6 +10,7 @@ use App\Http\Controllers\LaneController;
 use App\Http\Controllers\RankController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\ReceiptController;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
@@ -102,3 +103,8 @@ Route::post('/addLane/{user}/{lane}', [UserController::class, 'addLane']);
 Route::post('/addLanes/{user}', [UserController::class, 'addLanes']);
 Route::delete('/deleteUserLane/{user}/{lane}', [UserController::class, 'deleteUserLane']);
 Route::get('/lanes', [LaneController::class, 'index']);
+
+## Routes Messages
+## -------
+Route::get('/contacts', [ContactsController::class, 'getContacts']);
+Route::get('/conversation/{id}', [ContactsController::class, 'getMessagesFor']);

@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\User;
-use Illuminate\Http\Request;
+
 
 
 class ContactsController extends Controller
 {
-    public function get()
+    public function getContacts()
     {
         $contacts = User::all();
 
