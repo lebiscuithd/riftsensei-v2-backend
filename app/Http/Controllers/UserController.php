@@ -21,17 +21,6 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        User::create($request->all());
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\User  $user
@@ -95,20 +84,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-
-        foreach ($request->lane_id as $lane_Id) {
-            $lane = DB::table('user_lanes')->where('lane_id', $lane_Id)->first();
-            if ($lane) {
-                $user->lanes()->detach($lane_Id);
+        if ($request->lane_id) {
+            $user->lanes()->detach();
+            foreach ($request->lane_id as $lane_Id) {
                 $user->lanes()->attach($lane_Id);
-            } else {
-                $user->lanes()->attach($lane_Id);
-            }
-            }
+                }
+        }
 
-         if ($user->update($request->all())) {
+         if ($user->update($request->except(['wallet', 'remember_token', 'password', 'id', 'admin', 'verified_coach', 'coaching_hours', 'coach_rating', 'coaching_hours_spent']))) {
                     return response()->json([
-                        'success' => 'User successfully updated'
+                        'success' => 'User successfully updated',
+                        'user' => new UserResource($user)
                     ], 200);
                }
     }
