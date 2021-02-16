@@ -17,23 +17,23 @@ class LaneSeeder extends Seeder
         DB::table('lanes')->insert([
             [
                 'name' => 'Toplane',
-                'image' => 'caca'
+                'image' => 'https://static.wikia.nocookie.net/leagueoflegends/images/e/ef/Top_icon.png'
             ],
             [
                 'name' => 'Jungle',
-                'image' => 'coco'
+                'image' => 'https://static.wikia.nocookie.net/leagueoflegends/images/1/1b/Jungle_icon.png'
             ],
             [
                 'name' => 'Midlane',
-                'image' => 'cucu'
+                'image' => 'https://static.wikia.nocookie.net/leagueoflegends/images/9/98/Middle_icon.png'
             ],
             [
                 'name' => 'Botlane',
-                'image' => 'cece'
+                'image' => 'https://static.wikia.nocookie.net/leagueoflegends/images/9/97/Bottom_icon.png'
             ],
             [
                 'name' => 'Support',
-                'image' => 'cmcm'
+                'image' => 'https://static.wikia.nocookie.net/leagueoflegends/images/e/e0/Support_icon.png'
             ],
         ]);
     }

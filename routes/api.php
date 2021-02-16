@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LaneController;
+use App\Http\Controllers\RankController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReceiptController;
@@ -76,10 +78,6 @@ Route::post('/checkout', function(Request $request) {
 
 ## Routes User
 ## -------
-
-Route::post('/addLane/{user}/{lane}', [UserController::class, 'addLane']);
-Route::post('/addLanes/{user}', [UserController::class, 'addLanes']);
-Route::delete('/deleteUserLane/{user}/{lane}', [UserController::class, 'deleteUserLane']);
 Route::apiResource('users', 'App\Http\Controllers\UserController');
 
 
@@ -94,3 +92,14 @@ Route::get('ads/{orderBy}/{type}', 'App\Http\Controllers\AdController@orderBy');
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/receipts',[ReceiptController::class, 'index']);
 Route::post('/receipts', [ReceiptController::class, 'store']);
+
+## Routes Ranks
+## -------
+Route::get('/ranks', [RankController::class, 'index']);
+
+## Routes Lanes
+## -------
+Route::post('/addLane/{user}/{lane}', [UserController::class, 'addLane']);
+Route::post('/addLanes/{user}', [UserController::class, 'addLanes']);
+Route::delete('/deleteUserLane/{user}/{lane}', [UserController::class, 'deleteUserLane']);
+Route::get('/lanes', [LaneController::class, 'index']);

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rank;
+use App\Models\Lane;
 use Illuminate\Http\Request;
 
-class RankController extends Controller
+class LaneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RankController extends Controller
      */
     public function index()
     {
-        return Rank::all();
+        return Lane::all();
     }
 
     /**
@@ -41,10 +41,10 @@ class RankController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Rank  $rank
+     * @param  \App\Models\Lane  $lane
      * @return \Illuminate\Http\Response
      */
-    public function show(Rank $rank)
+    public function show(Lane $lane)
     {
         //
     }
@@ -52,10 +52,10 @@ class RankController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Rank  $rank
+     * @param  \App\Models\Lane  $lane
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rank $rank)
+    public function edit(Lane $lane)
     {
         //
     }
@@ -64,10 +64,10 @@ class RankController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Rank  $rank
+     * @param  \App\Models\Lane  $lane
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rank $rank)
+    public function update(Request $request, Lane $lane)
     {
         //
     }
@@ -75,10 +75,10 @@ class RankController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Rank  $rank
+     * @param  \App\Models\Lane  $lane
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rank $rank)
+    public function destroy(Lane $lane)
     {
         //
     }
