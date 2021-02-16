@@ -82,6 +82,10 @@ class ReceiptController extends Controller
      */
     public function destroy(Receipt $receipt)
     {
-        //
+        if ($receipt->delete()) {
+            return response()->json([
+                'success' => 'Receipt successfully deleted'
+            ], 200);
+        }
     }
 }

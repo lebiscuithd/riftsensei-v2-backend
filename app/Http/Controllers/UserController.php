@@ -53,26 +53,6 @@ class UserController extends Controller
         }
     }
 
-    public function show_rank(User $user)
-    {
-        $rank = $user->rank;
-        if (count((array)$rank) > 0){
-            return response()->json(['message'=>'Success','data'=>$rank], 200);
-        }
-            return response()->json(['message'=>'Nope','data'=>null], 200);
-    }
-
-//    public function getUserLanes()
-//    {
-//        $users = User::whereHas('lanes','>',0)->get();
-//        foreach($users as $user){
-//
-//            $user->lanes;  //we can get trophies of each user
-//        }
-//
-//        return response()->json(['data' => $users]);
-//    }
-
     public function addLane(User $user, $idOfLanes)
     {
         $user->lanes()->attach($idOfLanes);

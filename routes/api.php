@@ -90,8 +90,7 @@ Route::get('ads/{orderBy}/{type}', 'App\Http\Controllers\AdController@orderBy');
 ## -------
 
 Route::get('/products', [ProductController::class, 'index']);
-Route::get('/receipts',[ReceiptController::class, 'index']);
-Route::post('/receipts', [ReceiptController::class, 'store']);
+Route::apiResource('receipts','App\Http\Controllers\ReceiptController');
 
 ## Routes Ranks
 ## -------
