@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->text('description')->nullable();
             $table->text('pedagogy')->nullable();
             $table->integer('coaching_hours')->default(0);
-            $table->tinyInteger('coach_rating')->default(0);
+            $table->float('coach_rating')->default(0);
             $table->integer('coaching_hours_spent')->default(0);
             $table->rememberToken();
             $table->timestamps();

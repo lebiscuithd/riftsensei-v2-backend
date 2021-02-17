@@ -85,6 +85,9 @@ Route::apiResource('users', 'App\Http\Controllers\UserController');
 ## -------
 Route::apiResource('ads', 'App\Http\Controllers\AdController');
 Route::get('ads/{orderBy}/{type}', 'App\Http\Controllers\AdController@orderBy');
+Route::put('ads/book/{user}/{ad}', [AdController::class, 'bookAd']);
+Route::put('ads/finished/{coach}/{ad}', [AdController::class, 'validateAd']);
+Route::put('ads/rating/{ad}', [AdController::class, 'rateAd']);
 
 ## Routes Products/Receipts
 ## -------
