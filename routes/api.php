@@ -108,3 +108,4 @@ Route::get('/lanes', [LaneController::class, 'index']);
 ## -------
 Route::get('/contacts', [ContactsController::class, 'getContacts']);
 Route::get('/conversation/{id}', [ContactsController::class, 'getMessagesFor']);
+Route::post('/conversation/send', [ContactsController::class, 'sendMessage']);
