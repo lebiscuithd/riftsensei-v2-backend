@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\UserLane;
+use App\Models\Lane;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserLaneFactory extends Factory
@@ -22,8 +24,8 @@ class UserLaneFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->randomDigit,
-            'lane_id' => $this->faker->randomDigit
+            'user_id' => User::all()->random()->id,
+            'lane_id' => Lane::all()->random()->id
         ];
     }
 }
