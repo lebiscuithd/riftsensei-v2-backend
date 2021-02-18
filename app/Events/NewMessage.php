@@ -10,8 +10,9 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
-class NewMessage
+class NewMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -24,7 +25,7 @@ class NewMessage
      */
     public function __construct(Message $message)
     {
-        $this->$message = $message;
+        $this->message = $message;
     }
 
     /**
@@ -34,7 +35,10 @@ class NewMessage
      */
     public function broadcastOn()
     {
+        Log::debug('BroadcastOn fx');
         return new PrivateChannel('messages.' . $this->message->to);
+
+
     }
 
     public function broadcastWith()
