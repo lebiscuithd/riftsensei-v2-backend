@@ -96,7 +96,7 @@ Route::get('adsbystatus/{status}', [AdController::class,'getAdsByStatus']);
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::apiResource('receipts','App\Http\Controllers\ReceiptController');
-Route::get('receipts/{user}', [ReceiptController::class, 'showUserReceipts']);
+Route::get('receipts/showReceipt/{user}', [ReceiptController::class, 'showUserReceipts']);
 
 ## Routes Ranks
 ## -------
