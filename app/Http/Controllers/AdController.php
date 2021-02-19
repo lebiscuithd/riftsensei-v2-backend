@@ -31,8 +31,8 @@ class AdController extends Controller
      */
     public function index()
     {
-         $ads = Ad::orderBy('id', 'desc')->paginate(8);
-            return AdResource::collection($ads);
+        $ads = Ad::orderBy('id', 'desc')->get();
+        return AdResource::collection($ads);
     }
 
     public function getAdsByStatus($status)
@@ -41,7 +41,6 @@ class AdController extends Controller
         $ads = Ad::orderBy('id', 'desc')->where('status', $status)->paginate(8);
         return AdResource::collection($ads);
     }
-
 
     /**
      * @OA\Post (
