@@ -9,9 +9,16 @@ use App\Http\Resources\ReceiptResource;
 class ReceiptController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/receipts",
+     *      operationId="getReceiptsList",
+     *      summary="Get list of receipts",
+     *      description="Get list of receipts",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function index()
     {
@@ -30,10 +37,16 @@ class ReceiptController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @OA\Post (
+     *      path="/receipts",
+     *      operationId="postReceiptsList",
+     *      summary="Creates a new receipt",
+     *      description="Creates a new receipt",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function store(Request $request)
     {
@@ -75,10 +88,16 @@ class ReceiptController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Receipt  $receipt
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *      path="/receipts/{id}",
+     *      operationId="deleteReceipt",
+     *      summary="Delete Receipts",
+     *      description="Delete Receipts",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function destroy(Receipt $receipt)
     {

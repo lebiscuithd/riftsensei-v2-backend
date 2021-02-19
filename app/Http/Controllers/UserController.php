@@ -16,9 +16,16 @@ class UserController extends Controller
         $this->middleware('auth:api', ['except' => ['index', 'show', 'show_ads']]);
     }
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/users",
+     *      operationId="getUsersList",
+     *      summary="Get list of users",
+     *      description="Get list of users",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function index()
     {
@@ -26,16 +33,33 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/users/{id}",
+     *      operationId="getUser",
+     *      summary="Get profile of user",
+     *      description="Get profile of user",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function show(User $user)
     {
         return new UserResource($user);
     }
-
+    /**
+     * @OA\Get(
+     *      path="/users/{id}/ads",
+     *      operationId="getUserAds",
+     *      summary="Get ads of user",
+     *      description="Get ads of user",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
+     */
     public function show_ads(User $user)
     {
         $ads = $user->ads;
@@ -48,11 +72,16 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @OA\Put(
+     *      path="/users/{id}",
+     *      operationId="putUser",
+     *      summary="Update profile of user",
+     *      description="Update profile of user",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function update(Request $request, User $user)
     {
@@ -94,10 +123,16 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-
-     * @param  \App\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *      path="/users/{id}",
+     *      operationId="deleteUser",
+     *      summary="Delete user",
+     *      description="Delete user",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function destroy(User $user)
     {

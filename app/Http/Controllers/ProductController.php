@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/products",
+     *      operationId="getProductsList",
+     *      summary="Get list of products",
+     *      description="Returns list of products",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function index()
     {

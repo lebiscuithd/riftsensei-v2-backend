@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 class LaneController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/lanes",
+     *      operationId="getLanesList",
+     *      summary="Get lanes",
+     *      description="Get all lanes",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function index()
     {
@@ -18,9 +25,16 @@ class LaneController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Post (
+     *      path="/addLane/{user}/{lane}",
+     *      operationId="addLane",
+     *      summary="Add a Lane to a user",
+     *      description="Add a Lane to a user",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function create()
     {

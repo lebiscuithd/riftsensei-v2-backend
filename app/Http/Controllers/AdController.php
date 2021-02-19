@@ -10,9 +10,16 @@ use App\Http\Resources\AdResource;
 class AdController extends Controller
 {
     /**
-     * Display a listing of theads = Ad::all();
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/ads",
+     *      operationId="getAdsList",
+     *      summary="Get list of ads",
+     *      description="Returns list of ads",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function index()
     {
@@ -22,10 +29,16 @@ class AdController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @OA\Post (
+     *      path="/ads",
+     *      operationId="postAdsList",
+     *      summary="Creates a new ad",
+     *      description="Creates a new ad",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function store(Request $request)
     {
@@ -36,7 +49,7 @@ class AdController extends Controller
             'hourly_rate' => 'required|integer|min:100',
             'coach_id' => 'required|integer'
         ]);
-        
+
         if($validator->fails()){
             return response($validator->errors(), 422);
         }
@@ -49,15 +62,21 @@ class AdController extends Controller
             'hourly_rate' => $request->hourly_rate,
             'total_price' => (($request->hourly_rate) * ($request->duration)),
         ]);
-        
+
         return new AdResource($ad);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Ad  $ad
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/ads/{id}",
+     *      operationId="getAd",
+     *      summary="Get a specific ad",
+     *      description="Get a specific ad",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function show(Ad $ad)
     {
@@ -65,17 +84,35 @@ class AdController extends Controller
         return new AdResource($ad);
     }
 
+    /**
+     * @OA\Get(
+     *      path="/ads/{orderBy}/{type}",
+     *      operationId="sortAds",
+     *      summary="Sort Ads",
+     *      description="Sort Ads",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
+     */
+
     public function orderBy($orderBy, $type)
     {
         $ads = Ad::orderBy($orderBy, $type)->paginate(8);
         return AdResource::collection($ads);
     }
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ad  $ad
-     * @return \Illuminate\Http\Response
+     * @OA\Put(
+     *      path="/ads/{id}",
+     *      operationId="updateAds",
+     *      summary="Update Ads",
+     *      description="Update Ads",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function update(Request $request, Ad $ad)
     {
@@ -92,7 +129,7 @@ class AdController extends Controller
 
         if ($ad->update($request->all())) {
         $ad->total_price = ($ad->duration * $ad->hourly_rate);
-        $ad->save();    
+        $ad->save();
         return response()->json([
             'success' => 'Ad Updated'
         ], 200);
@@ -100,10 +137,16 @@ class AdController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Ad  $ad
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *      path="/ads/{id}",
+     *      operationId="deleteAds",
+     *      summary="Delete Ads",
+     *      description="Delete Ads",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function destroy(Ad $ad)
     {
