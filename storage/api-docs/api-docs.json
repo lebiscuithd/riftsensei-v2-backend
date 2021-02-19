@@ -1,0 +1,272 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel OpenApi Demo Documentation",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/docs",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/ads": {
+            "get": {
+                "summary": "Get list of ads",
+                "description": "Returns list of ads",
+                "operationId": "getAdsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Creates a new ad",
+                "description": "Creates a new ad",
+                "operationId": "postAdsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/ads/{id}": {
+            "get": {
+                "summary": "Get a specific ad",
+                "description": "Get a specific ad",
+                "operationId": "getAd",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update Ads",
+                "description": "Update Ads",
+                "operationId": "updateAds",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Ads",
+                "description": "Delete Ads",
+                "operationId": "deleteAds",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/ads/{orderBy}/{type}": {
+            "get": {
+                "summary": "Sort Ads",
+                "description": "Sort Ads",
+                "operationId": "sortAds",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/contacts": {
+            "get": {
+                "summary": "Gets contacts",
+                "description": "Gets contacts",
+                "operationId": "getContactsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/conversation/{id}": {
+            "get": {
+                "summary": "Gets messages in a conversation",
+                "description": "Gets messages in a conversation",
+                "operationId": "getMessagesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/conversation/send": {
+            "post": {
+                "summary": "Sends a message",
+                "description": "Sends a message",
+                "operationId": "postMessages",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/lanes": {
+            "get": {
+                "summary": "Get lanes",
+                "description": "Get all lanes",
+                "operationId": "getLanesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/addLane/{user}/{lane}": {
+            "post": {
+                "summary": "Add a Lane to a user",
+                "description": "Add a Lane to a user",
+                "operationId": "addLane",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "summary": "Get list of products",
+                "description": "Returns list of products",
+                "operationId": "getProductsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/ranks": {
+            "get": {
+                "summary": "Get list of ranks",
+                "description": "Get list of ranks",
+                "operationId": "getRanksList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/receipts": {
+            "get": {
+                "summary": "Get list of receipts",
+                "description": "Get list of receipts",
+                "operationId": "getReceiptsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Creates a new receipt",
+                "description": "Creates a new receipt",
+                "operationId": "postReceiptsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/receipts/{id}": {
+            "delete": {
+                "summary": "Delete Receipts",
+                "description": "Delete Receipts",
+                "operationId": "deleteReceipt",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "summary": "Get list of users",
+                "description": "Get list of users",
+                "operationId": "getUsersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "summary": "Get profile of user",
+                "description": "Get profile of user",
+                "operationId": "getUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update profile of user",
+                "description": "Update profile of user",
+                "operationId": "putUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete user",
+                "description": "Delete user",
+                "operationId": "deleteUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/users/{id}/ads": {
+            "get": {
+                "summary": "Get ads of user",
+                "description": "Get ads of user",
+                "operationId": "getUserAds",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "rift-sensei",
+            "description": "API Endpoints of Rift-Sensei"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
