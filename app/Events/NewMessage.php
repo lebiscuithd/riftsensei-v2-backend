@@ -35,14 +35,16 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        Log::debug('BroadcastOn fx');
-        return new PrivateChannel('messages.' . $this->message->to);
+        error_log('broadcaston');
+        error_log($this->message->to);
+        return new PrivateChannel('messages-' . $this->message->to);
 
 
     }
 
     public function broadcastWith()
     {
+        error_log('broadcastWith');
         return ['message' => $this->message];
     }
 }

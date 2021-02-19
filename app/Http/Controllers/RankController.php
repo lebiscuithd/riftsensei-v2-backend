@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 class RankController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/ranks",
+     *      operationId="getRanksList",
+     *      summary="Get list of ranks",
+     *      description="Get list of ranks",
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       )
+     *     )
      */
     public function index()
     {
