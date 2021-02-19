@@ -67,8 +67,7 @@ class ReceiptController extends Controller
 
     public function showUserReceipts(User $user)
     {
-        $receipts = $user->receipts();
-        return ReceiptResource::collection($receipts);
+        return $user->receipts();
     }
 
     /**
