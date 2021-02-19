@@ -24,7 +24,7 @@ class AdController extends Controller
      */
     public function index()
     {
-         $ads = Ad::orderBy('id', 'desc')->paginate(8);
+         $ads = Ad::orderBy('id', 'desc')->get();
             return AdResource::collection($ads);
     }
 

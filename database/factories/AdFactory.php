@@ -22,8 +22,8 @@ class AdFactory extends Factory
      */
     public function definition()
     {
-        $hourly_rate = $this->faker->numberBetween(1 , 20);
-        $duration = $this->faker->numberBetween(1, 5);
+        $hourly_rate = $this->faker->numberBetween(100 , 1000);
+        $duration = $this->faker->numberBetween(1, 8);
         $total_price = $hourly_rate * $duration;
         return [
             'coach_id'=> User::all()->random()->id,
