@@ -31,13 +31,8 @@ class AdController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
          $ads = Ad::orderBy('id', 'desc')->get();
             return AdResource::collection($ads);
-=======
-        $ads = Ad::orderBy('id', 'desc')->get();
-        return AdResource::collection($ads);
->>>>>>> 02abc082fe9962824e77d5a13b990e8785fa0506
     }
 
     public function getAdsByStatus($status)
