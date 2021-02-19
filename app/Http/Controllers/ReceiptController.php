@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Receipt;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\ReceiptResource;
 
@@ -61,7 +62,13 @@ class ReceiptController extends Controller
      */
     public function show(Receipt $receipt)
     {
-        //
+        return $receipt;
+    }
+
+    public function showUserReceipts(User $user)
+    {
+        $receipts = $user->receipts();
+        return ReceiptResource::collection($receipts);
     }
 
     /**

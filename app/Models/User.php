@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Rank;
 use App\Models\Lane;
+use App\Models\Receipt;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -91,5 +92,9 @@ class User extends Authenticatable implements JWTSubject
             'user_lanes',
             'user_id',
             'lane_id');
+    }
+
+    public function receipts() {
+        return $this->hasMany(Receipt::class);
     }
 }
