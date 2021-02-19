@@ -14,17 +14,24 @@ class AdController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['index', 'show', 'orderBy']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'orderBy', 'getAdsByStatus']]);
     }
 
     /**
      * Display a listing of theads = Ad::all();
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $ads = Ad::paginate(8);
+         $ads = Ad::orderBy('id', 'desc')->paginate(8);
+            return AdResource::collection($ads);
+    }
+
+    public function getAdsByStatus($status) 
+    {
+        
+        $ads = Ad::orderBy('id', 'desc')->where('status', $status)->paginate(8);
         return AdResource::collection($ads);
     }
 

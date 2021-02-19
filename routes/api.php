@@ -89,6 +89,7 @@ Route::get('ads/{orderBy}/{type}', 'App\Http\Controllers\AdController@orderBy');
 Route::put('ads/book/{user}/{ad}', [AdController::class, 'bookAd']);
 Route::put('ads/finished/{coach}/{ad}', [AdController::class, 'validateAd']);
 Route::put('ads/rating/{ad}', [AdController::class, 'rateAd']);
+Route::get('adsbystatus/{status}', [AdController::class,'getAdsByStatus']);
 
 ## Routes Products/Receipts
 ## -------

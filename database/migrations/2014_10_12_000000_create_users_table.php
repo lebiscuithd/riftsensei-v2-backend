@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('opgg_link')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar')->default('avatar.png');
+            $table->string('avatar')->default('http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/Aatrox.png');
             $table->text('description')->nullable();
             $table->text('pedagogy')->nullable();
             $table->integer('coaching_hours')->default(0);
